@@ -77,13 +77,13 @@ def statistics(data_dict):
         for utterance, response in get_shifting_windows(episode, 2):
             first = utterance['character']
             second = response['character']
-            if first == 'Scene':
+            if first == 'Scene' or second == "Scene":
                 continue
             utterance_counter[(first, second)] += 1
             response_counter[second] += 1
     print("most common utterance: response pairs")
     print(utterance_counter.most_common(15))
-    print("\n")
+    print("")
     print("most common utterances towards a specific character")
     print(response_counter.most_common(15))
 
